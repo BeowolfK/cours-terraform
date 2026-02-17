@@ -1,4 +1,4 @@
-# Target Group pour Nginx
+# Target group nginx : regroupe les instances nginx sur le port 80 avec health check
 resource "aws_lb_target_group" "nginx" {
   name     = "student-7-9-nginx-tg"
   port     = 80
@@ -21,7 +21,7 @@ resource "aws_lb_target_group" "nginx" {
   }
 }
 
-# Target Group pour Tomcat
+# Target group tomcat : regroupe les instances tomcat sur le port 8080 avec health check
 resource "aws_lb_target_group" "tomcat" {
   name     = "student-7-9-tomcat-tg"
   port     = 8080

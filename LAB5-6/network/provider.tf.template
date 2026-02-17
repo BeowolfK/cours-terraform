@@ -1,4 +1,4 @@
-# Provider AWS
+# Template du provider AWS (à copier vers provider.tf avec les credentials)
 terraform {
   required_providers {
     aws = {
@@ -8,10 +8,7 @@ terraform {
   }
 }
 
+# Provider AWS sans credentials (à compléter)
 provider "aws" {
   region = "eu-west-3"
-
-  # TODO: Copier ce fichier vers provider.tf et ajouter vos credentials:
-  # access_key = "VOTRE_ACCESS_KEY"
-  # secret_key = "VOTRE_SECRET_KEY"
 }

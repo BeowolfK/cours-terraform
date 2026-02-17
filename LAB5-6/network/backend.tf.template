@@ -1,4 +1,4 @@
-# Backend S3 pour Student X (7) - Network State
+# Template du backend S3 pour le state réseau (à copier vers backend.tf avec les credentials)
 terraform {
   backend "s3" {
     bucket         = "terraform-state-agvq0"
@@ -6,9 +6,5 @@ terraform {
     region         = "eu-west-3"
     dynamodb_table = "terraform-up-and-running-locks"
     encrypt        = true
-
-    # TODO: Copier ce fichier vers backend.tf et ajouter vos credentials:
-    # access_key = "VOTRE_ACCESS_KEY"
-    # secret_key = "VOTRE_SECRET_KEY"
   }
 }

@@ -1,10 +1,14 @@
-# Application Load Balancer
+# ALB internet-facing qui distribue le trafic HTTP vers les instances backend
 resource "aws_lb" "main" {
   name               = "student-7-9-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.public.id]
-  subnets            = [aws_subnet.public_a.id, aws_subnet.public_b.id]
+
+  subnets = [
+    aws_subnet.public_a.id,
+    aws_subnet.public_b.id
+  ]
 
   enable_deletion_protection = false
 
@@ -13,7 +17,7 @@ resource "aws_lb" "main" {
   }
 }
 
-# Listener sur port 80 avec action par défaut 404
+# Listener HTTP sur le port 80 avec une action par défaut 404
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.main.arn
   port              = "80"
@@ -30,7 +34,7 @@ resource "aws_lb_listener" "http" {
   }
 }
 
-# Règle : Si path = "/nginx" → forward vers nginx target group
+# Règle de routage : les requêtes /nginx* sont redirigées vers le target group nginx
 resource "aws_lb_listener_rule" "nginx" {
   listener_arn = aws_lb_listener.http.arn
   priority     = 100
@@ -47,7 +51,7 @@ resource "aws_lb_listener_rule" "nginx" {
   }
 }
 
-# Règle : Si path = "/tomcat" → forward vers tomcat target group
+# Règle de routage : les requêtes /tomcat* sont redirigées vers le target group tomcat
 resource "aws_lb_listener_rule" "tomcat" {
   listener_arn = aws_lb_listener.http.arn
   priority     = 200
