@@ -1,0 +1,14 @@
+# Configuration du backend S3 pour le state Terraform
+terraform {
+  backend "s3" {
+    bucket         = "terraform-state-agvq0"
+    key            = "global/s3/student_7/terraform.tfstate"
+    region         = "eu-west-3"
+    dynamodb_table = "terraform-up-and-running-locks"
+    encrypt        = true
+
+    # TODO: Copier ce fichier vers backend.tf et ajouter vos credentials:
+    # access_key = "VOTRE_ACCESS_KEY"
+    # secret_key = "VOTRE_SECRET_KEY"
+  }
+}
