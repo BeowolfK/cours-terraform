@@ -1,0 +1,10 @@
+# Template du backend S3 pour le state RDS (copier vers backend.tf avec les credentials)
+terraform {
+  backend "s3" {
+    bucket         = "terraform-state-agvq0"
+    key            = "global/s3/student_7_9/network_rds.tfstate"
+    region         = "eu-west-3"
+    dynamodb_table = "terraform-up-and-running-locks"
+    encrypt        = true
+  }
+}
