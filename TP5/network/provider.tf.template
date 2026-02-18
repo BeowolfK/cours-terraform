@@ -1,0 +1,14 @@
+# Template du provider AWS (à copier vers provider.tf avec les credentials)
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+# Provider AWS sans credentials (à compléter)
+provider "aws" {
+  region = "eu-west-3"
+}
